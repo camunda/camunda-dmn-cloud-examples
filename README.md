@@ -7,9 +7,11 @@ The example evaluates a deployed [DMN table] based on user input.
 
 - [java](java)
 - [node-js](node-js)
+- [c#](c#)
 - [ruby](ruby)
 - [python](python)
 - [groovy](groovy)
+- [php](php)
 - [rust](rust)
 - [perl](perl)
 - [bash](bash)

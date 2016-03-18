@@ -29,5 +29,5 @@
       					
 	$decoded = json_decode($curl_response);
 
-    echo "You should have " . $decoded->outputs->output1->values[0];
+    	echo "You should have " . $decoded->outputs->output1->values[0];
 ?>

@@ -39,7 +39,7 @@ namespace DishDecisionExample
             request.Add("input2", new Variable(numberOfGuests, "integer"));
 
             HttpResponseMessage response = http.PostAsJsonAsync("", request).Result;
-            if (!response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 DecisionResult result = response.Content.ReadAsAsync<DecisionResult>().Result;
                 return (string) result.outputs["output1"].values.First();

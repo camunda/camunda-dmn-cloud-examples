@@ -35,15 +35,15 @@ impl Inputs {
 
 impl ToJson for Inputs {
     fn to_json(&self) -> Json {
-        let mut input1 = BTreeMap::new();
-        input1.insert("type".to_string(), "string".to_json());
-        input1.insert("value".to_string(), self.season.to_json());
-        let mut input2 = BTreeMap::new();
-        input2.insert("type".to_string(), "integer".to_json());
-        input2.insert("value".to_string(), self.guests.to_json());
+        let mut season = BTreeMap::new();
+        season.insert("type".to_string(), "string".to_json());
+        season.insert("value".to_string(), self.season.to_json());
+        let mut guests = BTreeMap::new();
+        guests.insert("type".to_string(), "integer".to_json());
+        guests.insert("value".to_string(), self.guests.to_json());
         let mut inputs = BTreeMap::new();
-        inputs.insert("input1".to_string(), Json::Object(input1));
-        inputs.insert("input2".to_string(), Json::Object(input2));
+        inputs.insert("season".to_string(), Json::Object(season));
+        inputs.insert("guests".to_string(), Json::Object(guests));
         Json::Object(inputs)
     }
 }
@@ -72,6 +72,6 @@ fn main() {
     res.read_to_string(&mut body).expect("unable to parse reponse");
     let json: DecisionResult = json::decode(&body).expect("unable to transform json");
 
-    let result = &json.outputs["output1"].values[0];
+    let result = &json.outputs["dish"].values[0];
     println!("You should have {}", result);
 }

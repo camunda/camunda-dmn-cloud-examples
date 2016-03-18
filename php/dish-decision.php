@@ -1,17 +1,17 @@
 <?php
 	$data = array(
-		'input1' => array(
+		'season' => array(
 			'type' => 'string',
 		    'value' =>  $_GET["season"]
 		),
-		'input2' => array(
+		'guests' => array(
 			'type' => 'integer',
 		    'value' =>  intval($_GET["guestCount"])
 		)
-	);	
+	);
 
 	$service_url = 'https://dmn.camunda.cloud/api/v1/decision/example-dish';
-      					
+
 	$curl = curl_init($service_url);
 
 	curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
@@ -24,10 +24,10 @@
 	curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
 
 	$curl_response = curl_exec($curl);
-      					
+
 	curl_close($curl);
-      					
+
 	$decoded = json_decode($curl_response);
 
-    	echo "You should have " . $decoded->outputs->output1->values[0];
+    echo "You should have " . $decoded->outputs->dish->values[0];
 ?>

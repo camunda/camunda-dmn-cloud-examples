@@ -35,14 +35,14 @@ namespace DishDecisionExample
                      new MediaTypeWithQualityHeaderValue("application/json"));
 
             Dictionary<string, Variable> request = new Dictionary<string, Variable>();
-            request.Add("input1", new Variable(season, "string"));
-            request.Add("input2", new Variable(numberOfGuests, "integer"));
+            request.Add("season", new Variable(season, "string"));
+            request.Add("guests", new Variable(numberOfGuests, "integer"));
 
             HttpResponseMessage response = http.PostAsJsonAsync("", request).Result;
             if (response.IsSuccessStatusCode)
             {
                 DecisionResult result = response.Content.ReadAsAsync<DecisionResult>().Result;
-                return (string) result.outputs["output1"].values.First();
+                return (string) result.outputs["dish"].values.First();
             }
             return null;
         }

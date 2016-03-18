@@ -45,14 +45,14 @@ public class DishDecision {
     Client client = Client.create(clientConfig);
 
     Map<String, VariableValue> variables = new HashMap<String, VariableValue>();
-    variables.put("input1", new VariableValue("string", season));
-    variables.put("input2", new VariableValue("integer", guests));
+    variables.put("season", new VariableValue("string", season));
+    variables.put("guests", new VariableValue("integer", guests));
 
     WebResource resource = client.resource("https://dmn.camunda.cloud/api/v1/decision/example-dish");
     ClientResponse response = resource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, variables);
     DecisionResult decisionResult = response.getEntity(DecisionResult.class);
 
-    String result = (String) decisionResult.getOutputs().get("output1").getValues().get(0);
+    String result = (String) decisionResult.getOutputs().get("dish").getValues().get(0);
     System.out.println("You should have " + result);
   }
 

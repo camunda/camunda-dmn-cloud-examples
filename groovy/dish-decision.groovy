@@ -7,8 +7,8 @@ def season = System.console().readLine('What Season is it? (Spring, Summer, Fall
 def guests = System.console().readLine('How many Guests?  ')
 
 def inputs = [
-    input1: [ value: season, type: 'string'],
-    input2: [ value: guests.toInteger(), type: 'integer']
+    season: [ value: season, type: 'string'],
+    guests: [ value: guests.toInteger(), type: 'integer']
 ]
 
 def client = new RESTClient('https://dmn.camunda.cloud')
@@ -18,7 +18,7 @@ client.post(
     requestContentType: JSON
 ) { response, json ->
 
-    def result = json.outputs.output1.values[0];
+    def result = json.outputs.dish.values[0];
     println "You should have $result"
 
 }

@@ -25,7 +25,7 @@ rl.question("What Season is it? (Spring, Summer, Fall, Winter)  ", function(seas
       });
       res.on('end', function() {
         var response = JSON.parse(body);
-        var result = response.outputs.output1.values[0];
+        var result = response.outputs.dish.values[0];
 
         console.log('You should have ' + result);
 
@@ -34,11 +34,11 @@ rl.question("What Season is it? (Spring, Summer, Fall, Winter)  ", function(seas
     });
 
     req.write(JSON.stringify({
-      input1: {
+      season: {
         value: season,
         type: 'string'
       },
-      input2: {
+      guests: {
         value: parseInt(guests, 10),
         type: 'integer'
       }

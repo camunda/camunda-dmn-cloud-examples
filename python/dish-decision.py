@@ -5,9 +5,9 @@ season = input('What Season is it? (Spring, Summer, Fall, Winter)  ')
 guests = input('How many Guests?  ')
 
 inputs = json.dumps({
-    'input1': {'value': season,
+    'season': {'value': season,
                'type': 'string'},
-    'input2': {'value': int(guests),
+    'guests': {'value': int(guests),
                'type': 'integer'}
 }).encode('utf-8')
 
@@ -19,5 +19,5 @@ request = urllib.request.Request(
 with urllib.request.urlopen(request) as response:
     body = response.read().decode('utf-8')
 
-result = json.loads(body)['outputs']['output1']['values'][0]
+result = json.loads(body)['outputs']['dish']['values'][0]
 print('You should have ' + result)

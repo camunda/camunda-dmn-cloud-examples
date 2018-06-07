@@ -1,6 +1,8 @@
 import json
 import urllib.request
 
+key = input('Your public key: ')
+
 season = input('What Season is it? (Spring, Summer, Fall, Winter)  ')
 guests = input('How many Guests?  ')
 
@@ -12,7 +14,7 @@ inputs = json.dumps({
 }).encode('utf-8')
 
 request = urllib.request.Request(
-    'https://dmn.camunda.cloud/api/v1/decision/example-dish',
+    'https://dmn.lab.camunda.com/api/v1/decision/{}'.format(key),
     data=inputs,
     headers={'Content-Type': 'application/json'})
 
